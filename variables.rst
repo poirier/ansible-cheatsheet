@@ -4,11 +4,11 @@ Variables
 .. _variables:
 
 Variables
--------------
+---------
 
 Some variables alter the behavior of ansible (see http://docs.ansible.com/intro_inventory.html#list-of-behavioral-inventory-parameters for a list).
 
-Any of them can be used anywhere Jinja templating is in effect.
+Any of them can be used anywhere Jinja2 templating is in effect.
 
 Places to define variables:
 
@@ -30,8 +30,14 @@ And here's the precedence order:
 .. _variables-file:
 
 Variables file
-----------------
-A YAML file whose content is a single dictionary defining :ref:`variables`
+--------------
+
+A file that defines values of :ref:`variables`.
+
+Syntax
+    YAML defining a single dictionary
+Templating
+    Jinja2  (?)
 
 .. _variables-files:
 
