@@ -23,14 +23,14 @@ import os
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
-#needs_sphinx = '1.0'
+needs_sphinx = '1.0'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.todo',
+#    'sphinx.ext.intersphinx',
+#    'sphinx.ext.todo',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -331,8 +331,11 @@ epub_exclude_files = ['search.html']
 #epub_use_index = True
 
 
-# Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'http://docs.python.org/': None}
+# Not much point in this because the ansible docs
+# don't seem to define the necessary labels
+intersphinx_mapping = {
+    'ansible': ('http://docs.ansible.com', None),
+}
 
 
 # on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org
