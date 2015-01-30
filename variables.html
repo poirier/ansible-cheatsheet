@@ -1,0 +1,261 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Variables &mdash; Ansible Cheatsheet 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Ansible Cheatsheet 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Conditionals" href="conditionals.html"/>
+        <link rel="prev" title="Task" href="task.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> Ansible Cheatsheet</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#configuration-file">Configuration file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inventory.html">Inventory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inventory.html#inventory-directory">Inventory directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inventory.html#picking-an-inventory-file">Picking an inventory file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inventory.html#inventory-file">Inventory file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="playbook.html">Playbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="playbook.html#playbook-directory">Playbook directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="playbook.html#id2">Playbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="playbook.html#playbook-include">Playbook include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="playbook.html#play">Play</a></li>
+<li class="toctree-l2"><a class="reference internal" href="playbook.html#running-a-playbook">Running a playbook</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role.html">Roles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="role.html#role">Role</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role.html#role-dependencies-file">Role dependencies file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role.html#dependency-dictionary">Dependency dictionary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task.html">Task</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task.html#tasks-file">Tasks file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task.html#task-include">Task include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task.html#id3">Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task.html#handler">Handler</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Variables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#variables-file">Variables file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#variables-files">Variables files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#facts">Facts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Ansible Cheatsheet</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Variables</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/variables.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="variables">
+<h1>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<span id="id2"></span><h2>Variables<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Some variables alter the behavior of ansible (see <a class="reference external" href="http://docs.ansible.com/intro_inventory.html#list-of-behavioral-inventory-parameters">http://docs.ansible.com/intro_inventory.html#list-of-behavioral-inventory-parameters</a> for a list).</p>
+<p>Any of them can be used anywhere Jinja templating is in effect.</p>
+<p>Places to define variables:</p>
+<ul class="simple">
+<li>inventory</li>
+<li>playbook</li>
+<li>included files and roles</li>
+<li>local facts</li>
+<li>ansible command line (<tt class="docutils literal"><span class="pre">--extra-vars</span> <span class="pre">&quot;foo=1</span> <span class="pre">bar=2&quot;</span></tt> or <tt class="docutils literal"><span class="pre">--extra-vars</span> <span class="pre">&#64;filepath.json</span></tt> or <tt class="docutils literal"><span class="pre">--extra-vars</span> <span class="pre">&#64;filepath.yml</span></tt>)</li>
+</ul>
+<p>And here&#8217;s the precedence order:</p>
+<ul class="simple">
+<li>extra vars (-e in the command line) always win</li>
+<li>then comes connection variables defined in inventory (ansible_ssh_user, etc)</li>
+<li>then comes &#8220;most everything else&#8221; (command line switches, vars in play, included vars, role vars, etc)</li>
+<li>then comes the rest of the variables defined in inventory</li>
+<li>then comes facts discovered about a system</li>
+<li>then &#8220;role defaults&#8221;, which are the most &#8220;defaulty&#8221; and lose in priority to everything.</li>
+</ul>
+</div>
+<div class="section" id="variables-file">
+<span id="id3"></span><h2>Variables file<a class="headerlink" href="#variables-file" title="Permalink to this headline">¶</a></h2>
+<p>A YAML file whose content is a single dictionary defining <a class="reference internal" href="#id1"><em>Variables</em></a></p>
+</div>
+<div class="section" id="variables-files">
+<span id="id4"></span><h2>Variables files<a class="headerlink" href="#variables-files" title="Permalink to this headline">¶</a></h2>
+<p>Ansible will look in <a class="reference internal" href="inventory.html#inventory-directory"><em>Inventory directory</em></a> and
+<a class="reference internal" href="playbook.html#playbook-directory"><em>Playbook directory</em></a>
+for directories named <tt class="docutils literal"><span class="pre">host_vars</span></tt> or <tt class="docutils literal"><span class="pre">group_vars</span></tt>.  Inside
+those directories, you can put a single <a class="reference internal" href="#variables-file"><em>Variables file</em></a> with the same
+name as a host or group (respectively) and Ansible will use those
+<a class="reference internal" href="#id1"><em>Variables</em></a> definitions.</p>
+<p>Or a file named <tt class="docutils literal"><span class="pre">all</span></tt> that will be used for all hosts or groups.</p>
+<p>Or you can create a directory with the same name as a host or group
+and Ansible will use all the files in that directory as
+<a class="reference internal" href="#variables-file"><em>Variables file</em></a> s.</p>
+</div>
+<div class="section" id="facts">
+<span id="id5"></span><h2>Facts<a class="headerlink" href="#facts" title="Permalink to this headline">¶</a></h2>
+<p>Ansible automatically defines a whole bunch of variables with
+information about the system that it&#8217;s running on (the system
+the plays and tasks are running on, not the system you&#8217;re
+controlling ansible from).</p>
+<p>You can add to the facts with config files called
+<a class="reference external" href="http://docs.ansible.com/playbooks_variables.html#local-facts-facts-d">local facts</a>
+though I don&#8217;t know how that&#8217;s any better than putting
+variables in all the other places you can set them...</p>
+<p>To see a list of all of the facts that are available about a machine,
+you can run the “setup” module as an ad-hoc action:</p>
+<div class="highlight-python"><div class="highlight"><pre>ansible -m setup hostname
+</pre></div>
+</div>
+<p>This will print out a dictionary of all of the facts that are
+available for that particular host.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="conditionals.html" class="btn btn-neutral float-right" title="Conditionals"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="task.html" class="btn btn-neutral" title="Task"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dan Poirier.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

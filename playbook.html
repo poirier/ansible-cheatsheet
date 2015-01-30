@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Playbook &mdash; Ansible Cheatsheet 0.1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Ansible Cheatsheet 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Roles" href="role.html"/>
+        <link rel="prev" title="Inventory" href="inventory.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> Ansible Cheatsheet</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#configuration-file">Configuration file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inventory.html">Inventory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inventory.html#inventory-directory">Inventory directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inventory.html#picking-an-inventory-file">Picking an inventory file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inventory.html#inventory-file">Inventory file</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Playbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#playbook-directory">Playbook directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Playbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#playbook-include">Playbook include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#play">Play</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-a-playbook">Running a playbook</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="role.html">Roles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="role.html#role">Role</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role.html#role-dependencies-file">Role dependencies file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="role.html#dependency-dictionary">Dependency dictionary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task.html">Task</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task.html#tasks-file">Tasks file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task.html#task-include">Task include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task.html#id3">Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task.html#handler">Handler</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="variables.html#id1">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variables.html#variables-file">Variables file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variables.html#variables-files">Variables files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variables.html#facts">Facts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Ansible Cheatsheet</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Playbook</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/playbook.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="playbook">
+<h1>Playbook<a class="headerlink" href="#playbook" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="playbook-directory">
+<span id="id1"></span><h2>Playbook directory<a class="headerlink" href="#playbook-directory" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Default</dt>
+<dd>current dir</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<span id="id3"></span><h2>Playbook<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Syntax</dt>
+<dd><p class="first">A YAML file defining a list of <a class="reference internal" href="#play"><em>Play</em></a> s and <a class="reference internal" href="#playbook-include"><em>Playbook include</em></a> s:</p>
+<div class="last highlight-python"><div class="highlight"><pre>- &lt;play&gt;
+- &lt;play&gt;
+- include: &lt;path to playbook&gt;
+- include: &lt;path to playbook&gt;
+</pre></div>
+</div>
+</dd>
+<dt>Templating</dt>
+<dd>A playbook is rendered as a Jinja2 template before processing it,
+but playbooks should not use loops and conditionals.</dd>
+</dl>
+</div>
+<div class="section" id="playbook-include">
+<span id="id4"></span><h2>Playbook include<a class="headerlink" href="#playbook-include" title="Permalink to this headline">¶</a></h2>
+<p>A playbook can include other playbooks.</p>
+<p>Note that, unlike <a class="reference internal" href="task.html#task-include"><em>Task include</em></a> s, playbook includes cannot
+set variables.</p>
+</div>
+<div class="section" id="play">
+<span id="id5"></span><h2>Play<a class="headerlink" href="#play" title="Permalink to this headline">¶</a></h2>
+<p>A dictionary:</p>
+<div class="highlight-python"><div class="highlight"><pre>hosts:  hosta:pattern1:pattern2   # required
+vars:
+  var1: value1
+  var2: value2
+roles:
+  - &lt;rolename1&gt;
+  - &lt;rolename2&gt;
+remote_user: username
+sudo: yes|no
+sudo_user: username
+tasks:
+  - &lt;task&gt;
+  - include: &lt;taskfile&gt;
+  - &lt;task&gt;
+handlers:
+  - &lt;task&gt;
+  - include: &lt;taskfile&gt;
+  - &lt;task&gt;
+notify:
+  - &lt;handler name&gt;
+  - &lt;handler name&gt;
+vars_files:
+  - &lt;path to external variables file&gt;
+  - [&lt;path1&gt;, &lt;path2&gt;, ...]   (ansible loads the first one found)
+  - &lt;path to external variables file&gt;
+</pre></div>
+</div>
+<p>Required keys:</p>
+<dl class="docutils">
+<dt>hosts</dt>
+<dd>A string, containing one or more <a class="reference internal" href="index.html#host-pattern"><em>Host pattern</em></a> s separated by colons</dd>
+</dl>
+<p>Optional keys:</p>
+<dl class="docutils">
+<dt>handlers</dt>
+<dd>list of <a class="reference internal" href="task.html#handler"><em>Handler</em></a> s and <a class="reference internal" href="task.html#task-include"><em>Task include</em></a> s.</dd>
+<dt>pre_tasks</dt>
+<dd>list of <a class="reference internal" href="task.html#id3"><em>Task</em></a> s and <a class="reference internal" href="task.html#task-include"><em>Task include</em></a> s.  These are
+executed before roles.</dd>
+<dt>roles</dt>
+<dd><p class="first">list of names of <a class="reference internal" href="role.html#role"><em>Role</em></a> s to include in the play.  You can
+add parameters, tags, and conditionals:</p>
+<div class="last highlight-python"><div class="highlight"><pre>roles:
+  - common
+  - { role: foo_app_instance, dir: &#39;/opt/a&#39;, tags: [&quot;bar&quot;, &quot;baz&quot;] }
+  - { role: foo_app_instance, dir: &#39;/opt/b&#39;, when: &quot;ansible_os_family == &#39;RedHat&#39;&quot; }
+</pre></div>
+</div>
+</dd>
+<dt>tasks</dt>
+<dd>list of <a class="reference internal" href="task.html#id3"><em>Task</em></a> s and <a class="reference internal" href="task.html#task-include"><em>Task include</em></a> s.  These are
+executed after the <cite>roles</cite>.</dd>
+<dt>post_tasks</dt>
+<dd>list of <a class="reference internal" href="task.html#id3"><em>Task</em></a> s and <a class="reference internal" href="task.html#task-include"><em>Task include</em></a> s.  These are
+executed after the <cite>tasks</cite>.</dd>
+<dt>notify</dt>
+<dd>list of names of <a class="reference internal" href="task.html#handler"><em>Handler</em></a> s to trigger when done, but
+only if something changed</dd>
+<dt>vars</dt>
+<dd>A dictionary defining additional <a class="reference internal" href="variables.html#id1"><em>Variables</em></a></dd>
+<dt>remote_user</dt>
+<dd>user to login as remotely</dd>
+<dt>sudo</dt>
+<dd>yes|no</dd>
+<dt>sudo_user</dt>
+<dd>user to sudo to remotely</dd>
+</dl>
+</div>
+<div class="section" id="running-a-playbook">
+<span id="id6"></span><h2>Running a playbook<a class="headerlink" href="#running-a-playbook" title="Permalink to this headline">¶</a></h2>
+<p>ansible-playbook &lt;filepath of playbook&gt; [options]</p>
+<dl class="docutils">
+<dt>ansible-playbook playbook.yml &#8211;start-at=&#8221;install packages&#8221;</dt>
+<dd>The above will start executing your playbook at a task named “install packages”.</dd>
+<dt>ansible-playbook playbook.yml &#8211;step</dt>
+<dd>This will cause ansible to stop on each task, and ask if it should execute that task.</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="role.html" class="btn btn-neutral float-right" title="Roles"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="inventory.html" class="btn btn-neutral" title="Inventory"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Dan Poirier.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

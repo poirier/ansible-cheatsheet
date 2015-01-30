@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Ansible Cheatsheet &mdash; Ansible Cheatsheet 0.1 documentation</title>
+  <title>Conditionals &mdash; Ansible Cheatsheet 0.1 documentation</title>
   
 
   
@@ -28,8 +28,9 @@
   
 
   
-    <link rel="top" title="Ansible Cheatsheet 0.1 documentation" href="#"/>
-        <link rel="next" title="Configuration" href="configuration.html"/> 
+    <link rel="top" title="Ansible Cheatsheet 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Loops" href="loops.html"/>
+        <link rel="prev" title="Variables" href="variables.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -43,7 +44,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-nav-search">
-        <a href="#" class="fa fa-home"> Ansible Cheatsheet</a>
+        <a href="index.html" class="fa fa-home"> Ansible Cheatsheet</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -56,7 +57,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="configuration.html#configuration-file">Configuration file</a></li>
 </ul>
@@ -95,7 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="variables.html#facts">Facts</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
 </ul>
 
@@ -109,7 +110,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="#">Ansible Cheatsheet</a>
+        <a href="index.html">Ansible Cheatsheet</a>
       </nav>
 
 
@@ -118,12 +119,12 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="#">Docs</a> &raquo;</li>
+    <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Ansible Cheatsheet</li>
+    <li>Conditionals</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="_sources/index.txt" rel="nofollow"> View page source</a>
+          <a href="_sources/conditionals.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -131,81 +132,9 @@
 </div>
           <div role="main">
             
-  <div class="section" id="ansible-cheatsheet">
-<h1>Ansible Cheatsheet<a class="headerlink" href="#ansible-cheatsheet" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="configuration.html#configuration-file">Configuration file</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="inventory.html">Inventory</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inventory.html#inventory-directory">Inventory directory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inventory.html#picking-an-inventory-file">Picking an inventory file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inventory.html#inventory-file">Inventory file</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="playbook.html">Playbook</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="playbook.html#playbook-directory">Playbook directory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="playbook.html#id2">Playbook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="playbook.html#playbook-include">Playbook include</a></li>
-<li class="toctree-l2"><a class="reference internal" href="playbook.html#play">Play</a></li>
-<li class="toctree-l2"><a class="reference internal" href="playbook.html#running-a-playbook">Running a playbook</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="role.html">Roles</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="role.html#role">Role</a></li>
-<li class="toctree-l2"><a class="reference internal" href="role.html#role-dependencies-file">Role dependencies file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="role.html#dependency-dictionary">Dependency dictionary</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="task.html">Task</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="task.html#tasks-file">Tasks file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task.html#task-include">Task include</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task.html#id3">Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task.html#handler">Handler</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="variables.html#id1">Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="variables.html#variables-file">Variables file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="variables.html#variables-files">Variables files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="variables.html#facts">Facts</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
-</ul>
-<div class="section" id="ad-hoc-command">
-<span id="id1"></span><h2>Ad-hoc command<a class="headerlink" href="#ad-hoc-command" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div>ansible <a class="reference internal" href="#host-pattern"><em>Host pattern</em></a> -m &lt;module&gt; [options]</div></blockquote>
-<p>e.g.</p>
-<blockquote>
-<div>$ ansible all -m ping &#8211;ask-pass</div></blockquote>
-<p>Shortcut to run a command:</p>
-<blockquote>
-<div>$ ansible all -a &#8220;/bin/echo hello&#8221;</div></blockquote>
-<p>options:  see output of &#8220;ansible &#8211;help&#8221; for now</p>
-<p>See <a class="reference external" href="http://docs.ansible.com/intro_adhoc.html">ad-hoc commands</a>.</p>
-</div>
-<div class="section" id="host-pattern">
-<span id="id2"></span><h2>Host pattern<a class="headerlink" href="#host-pattern" title="Permalink to this headline">¶</a></h2>
-<p>See [patterns](<a class="reference external" href="http://docs.ansible.com/intro_patterns.html#patterns">http://docs.ansible.com/intro_patterns.html#patterns</a>) for now</p>
-<p>&lt;hosts&gt;:</p>
-<blockquote>
-<div>&#8220;all&#8221; = all hosts in inventory file</div></blockquote>
-</div>
+  <div class="section" id="conditionals">
+<h1>Conditionals<a class="headerlink" href="#conditionals" title="Permalink to this headline">¶</a></h1>
+<p>See <a class="reference external" href="http://docs.ansible.com/playbooks_conditionals.html">http://docs.ansible.com/playbooks_conditionals.html</a></p>
 </div>
 
 
@@ -214,8 +143,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="configuration.html" class="btn btn-neutral float-right" title="Configuration"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="loops.html" class="btn btn-neutral float-right" title="Loops"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
+      
+        <a href="variables.html" class="btn btn-neutral" title="Variables"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
