@@ -16,12 +16,12 @@ Things I'm always wanting to look up about
   loops
 
 
-Indices and tables
-==================
+.. Indices and tables
+.. ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. (no index entries yet) * :ref:`genindex`
+.. (no modules) * :ref:`modindex`
+.. (not needed) * :ref:`search`
 
 Misc. stuff I need to file somewhere:
 
@@ -49,7 +49,7 @@ See `ad-hoc commands <http://docs.ansible.com/intro_adhoc.html>`_.
 Host pattern
 ------------------
 
-See [patterns](http://docs.ansible.com/intro_patterns.html#patterns) for now
+See `patterns <http://docs.ansible.com/intro_patterns.html#patterns>`_ for now
 
 <hosts>:
 
