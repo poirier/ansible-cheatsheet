@@ -1,12 +1,8 @@
-.. Ansible Cheatsheet documentation master file, created by
-   sphinx-quickstart on Thu Jan 29 13:59:27 2015.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Ansible Cheatsheet
 ==================
 
-Contents:
+Things I'm always wanting to look up about
+`Ansible <http://docs.ansible.com/>`_.
 
 .. toctree::
 
@@ -26,6 +22,8 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+Misc. stuff I need to file somewhere:
 
 .. _ad-hoc-command:
 
