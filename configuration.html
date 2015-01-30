@@ -64,7 +64,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inventory.html">Inventory</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="inventory.html#inventory-directory">Inventory directory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inventory.html#picking-an-inventory-file">Picking an inventory file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inventory.html#inventory-file">Inventory file</a></li>
 </ul>
 </li>
@@ -152,21 +151,25 @@
 </dd>
 </dl>
 <p>Some useful vars in the <tt class="docutils literal"><span class="pre">[defaults]</span></tt> section:</p>
-<dl class="docutils">
-<dt>hostfile</dt>
-<dd><p class="first">This is the default location of the inventory file, script, or directory that Ansible will use to determine what hosts it has available to talk to:</p>
-<p class="last">hostfile = /etc/ansible/hosts</p>
-</dd>
-<dt>roles_path</dt>
-<dd><p class="first">The roles path indicate additional directories beyond the ‘roles/’ subdirectory of a playbook project to search to find Ansible roles. For instance, if there was a source control repository of common roles and a different repository of playbooks, you might choose to establish a convention to checkout roles in /opt/mysite/roles like so:</p>
+<div class="section" id="hostfile">
+<span id="id2"></span><h3>hostfile<a class="headerlink" href="#hostfile" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>This is the default location of the inventory file, script, or directory that Ansible will use to determine what hosts it has available to talk to:</p>
+<p>hostfile = /etc/ansible/hosts</p>
+</div></blockquote>
+</div>
+<div class="section" id="roles-path">
+<span id="id3"></span><h3>roles_path<a class="headerlink" href="#roles-path" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>The roles path indicate additional directories beyond the ‘roles/’ subdirectory of a playbook project to search to find Ansible roles. For instance, if there was a source control repository of common roles and a different repository of playbooks, you might choose to establish a convention to checkout roles in /opt/mysite/roles like so:</p>
 <blockquote>
 <div>roles_path = /opt/mysite/roles</div></blockquote>
 <p>Additional paths can be provided separated by colon characters, in the same way as other pathstrings:</p>
 <blockquote>
 <div>roles_path = /opt/mysite/roles:/opt/othersite/roles</div></blockquote>
-<p class="last">Roles will be first searched for in the playbook directory. Should a role not be found, it will indicate all the possible paths that were searched.</p>
-</dd>
-</dl>
+<p>Roles will be first searched for in the playbook directory. Should a role not be found, it will indicate all the possible paths that were searched.</p>
+</div></blockquote>
+</div>
 </div>
 </div>
 

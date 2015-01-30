@@ -6,18 +6,7 @@ Inventory
 Inventory directory
 --------------------------
 
-Default
-    ``/etc/ansible``
-
-.. _picking-inventory:
-
-Picking an inventory file
--------------------------
-
-Different ways::
-
-    ansible-playbook -i <inventoryfile> ...
-    
+Whatever directory the :ref:`inventory-file` is in.
 
 .. _inventory-file:
 
@@ -28,16 +17,20 @@ Default
     ``/etc/ansible/hosts``
 
 Change
-    ``env ANSIBLE_HOSTS=<filepath>``
+    set ``ANSIBLE_HOSTS`` in environment
+
+    ``ansible-playbook -i <inventoryfile> ...``
+
+    set :ref:`hostfile` in configuration
 
 Syntax
-    .ini file
+    .ini file, except initial lines don't need to be in a section
 
-basically a list of hostnames or IP addresses, one per line. Can
-include port with ``hostname:port`` or ``address:port``.
+The inventory file is basically a list of hostnames or IP addresses,
+one per line. Can include port with ``hostname:port`` or ``address:port``.
 
-Ranges: Including ``[n:m]`` in a line will repeat the line for every
-value from n through m.  m and n can be numbers or letters.
+Ranges: Including ``[m:n]`` in a line will repeat the line for every
+value from ``m`` through ``n``.  ``m`` and ``n`` can be numbers or letters.
 
 Host :ref:`variables`: Can specify per-host options after hostname on the
 same line.  E.g.  ``jumper ansible_ssh_port=5555

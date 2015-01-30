@@ -64,7 +64,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inventory.html">Inventory</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="inventory.html#inventory-directory">Inventory directory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inventory.html#picking-an-inventory-file">Picking an inventory file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inventory.html#inventory-file">Inventory file</a></li>
 </ul>
 </li>
@@ -160,7 +159,10 @@ but playbooks should not use loops and conditionals.</dd>
 </div>
 <div class="section" id="playbook-include">
 <span id="id4"></span><h2>Playbook include<a class="headerlink" href="#playbook-include" title="Permalink to this headline">¶</a></h2>
-<p>A playbook can include other playbooks.</p>
+<p>A playbook can include other playbooks:</p>
+<div class="highlight-python"><div class="highlight"><pre>- include: &lt;path to playbook&gt;
+</pre></div>
+</div>
 <p>Note that, unlike <a class="reference internal" href="task.html#task-include"><em>Task include</em></a> s, playbook includes cannot
 set variables.</p>
 </div>

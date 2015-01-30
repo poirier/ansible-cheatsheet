@@ -64,7 +64,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inventory.html">Inventory</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="inventory.html#inventory-directory">Inventory directory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inventory.html#picking-an-inventory-file">Picking an inventory file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inventory.html#inventory-file">Inventory file</a></li>
 </ul>
 </li>
@@ -137,7 +136,7 @@
 <div class="section" id="id1">
 <span id="id2"></span><h2>Variables<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Some variables alter the behavior of ansible (see <a class="reference external" href="http://docs.ansible.com/intro_inventory.html#list-of-behavioral-inventory-parameters">http://docs.ansible.com/intro_inventory.html#list-of-behavioral-inventory-parameters</a> for a list).</p>
-<p>Any of them can be used anywhere Jinja templating is in effect.</p>
+<p>Any of them can be used anywhere Jinja2 templating is in effect.</p>
 <p>Places to define variables:</p>
 <ul class="simple">
 <li>inventory</li>
@@ -158,7 +157,13 @@
 </div>
 <div class="section" id="variables-file">
 <span id="id3"></span><h2>Variables file<a class="headerlink" href="#variables-file" title="Permalink to this headline">¶</a></h2>
-<p>A YAML file whose content is a single dictionary defining <a class="reference internal" href="#id1"><em>Variables</em></a></p>
+<p>A file that defines values of <a class="reference internal" href="#id1"><em>Variables</em></a>.</p>
+<dl class="docutils">
+<dt>Syntax</dt>
+<dd>YAML defining a single dictionary</dd>
+<dt>Templating</dt>
+<dd>Jinja2  (?)</dd>
+</dl>
 </div>
 <div class="section" id="variables-files">
 <span id="id4"></span><h2>Variables files<a class="headerlink" href="#variables-files" title="Permalink to this headline">¶</a></h2>

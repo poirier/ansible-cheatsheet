@@ -31,7 +31,9 @@ Templating
 Playbook include
 ----------------
 
-A playbook can include other playbooks.
+A playbook can include other playbooks::
+
+    - include: <path to playbook>
 
 Note that, unlike :ref:`task-include` s, playbook includes cannot
 set variables.

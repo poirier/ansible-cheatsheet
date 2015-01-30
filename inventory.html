@@ -64,7 +64,6 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Inventory</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#inventory-directory">Inventory directory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#picking-an-inventory-file">Picking an inventory file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#inventory-file">Inventory file</a></li>
 </ul>
 </li>
@@ -136,17 +135,7 @@
 <h1>Inventory<a class="headerlink" href="#inventory" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="inventory-directory">
 <span id="id1"></span><h2>Inventory directory<a class="headerlink" href="#inventory-directory" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>Default</dt>
-<dd><tt class="docutils literal"><span class="pre">/etc/ansible</span></tt></dd>
-</dl>
-</div>
-<div class="section" id="picking-an-inventory-file">
-<span id="picking-inventory"></span><h2>Picking an inventory file<a class="headerlink" href="#picking-an-inventory-file" title="Permalink to this headline">¶</a></h2>
-<p>Different ways:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">inventoryfile</span><span class="o">&gt;</span> <span class="o">...</span>
-</pre></div>
-</div>
+<p>Whatever directory the <a class="reference internal" href="#inventory-file"><em>Inventory file</em></a> is in.</p>
 </div>
 <div class="section" id="inventory-file">
 <span id="id2"></span><h2>Inventory file<a class="headerlink" href="#inventory-file" title="Permalink to this headline">¶</a></h2>
@@ -154,14 +143,17 @@
 <dt>Default</dt>
 <dd><tt class="docutils literal"><span class="pre">/etc/ansible/hosts</span></tt></dd>
 <dt>Change</dt>
-<dd><tt class="docutils literal"><span class="pre">env</span> <span class="pre">ANSIBLE_HOSTS=&lt;filepath&gt;</span></tt></dd>
+<dd><p class="first">set <tt class="docutils literal"><span class="pre">ANSIBLE_HOSTS</span></tt> in environment</p>
+<p><tt class="docutils literal"><span class="pre">ansible-playbook</span> <span class="pre">-i</span> <span class="pre">&lt;inventoryfile&gt;</span> <span class="pre">...</span></tt></p>
+<p class="last">set <a class="reference internal" href="configuration.html#hostfile"><em>hostfile</em></a> in configuration</p>
+</dd>
 <dt>Syntax</dt>
-<dd>.ini file</dd>
+<dd>.ini file, except initial lines don&#8217;t need to be in a section</dd>
 </dl>
-<p>basically a list of hostnames or IP addresses, one per line. Can
-include port with <tt class="docutils literal"><span class="pre">hostname:port</span></tt> or <tt class="docutils literal"><span class="pre">address:port</span></tt>.</p>
-<p>Ranges: Including <tt class="docutils literal"><span class="pre">[n:m]</span></tt> in a line will repeat the line for every
-value from n through m.  m and n can be numbers or letters.</p>
+<p>The inventory file is basically a list of hostnames or IP addresses,
+one per line. Can include port with <tt class="docutils literal"><span class="pre">hostname:port</span></tt> or <tt class="docutils literal"><span class="pre">address:port</span></tt>.</p>
+<p>Ranges: Including <tt class="docutils literal"><span class="pre">[m:n]</span></tt> in a line will repeat the line for every
+value from <tt class="docutils literal"><span class="pre">m</span></tt> through <tt class="docutils literal"><span class="pre">n</span></tt>.  <tt class="docutils literal"><span class="pre">m</span></tt> and <tt class="docutils literal"><span class="pre">n</span></tt> can be numbers or letters.</p>
 <p>Host <a class="reference internal" href="variables.html#id1"><em>Variables</em></a>: Can specify per-host options after hostname on the
 same line.  E.g.  <tt class="docutils literal"><span class="pre">jumper</span> <span class="pre">ansible_ssh_port=5555</span>
 <span class="pre">ansible_ssh_host=192.168.1.50</span></tt>.  See also <a class="reference internal" href="variables.html#variables-files"><em>Variables files</em></a>.</p>
