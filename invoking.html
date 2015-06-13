@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Invoking &mdash; Ansible Cheatsheet 1.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Ansible Cheatsheet 1.1 documentation" href="index.html" />
+    <link rel="next" title="Playbook" href="playbook.html" />
+    <link rel="prev" title="Inventory" href="inventory.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="playbook.html" title="Playbook"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="inventory.html" title="Inventory"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Ansible Cheatsheet 1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="invoking">
+<h1>Invoking<a class="headerlink" href="#invoking" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ad-hoc">
+<h2>Ad-hoc<a class="headerlink" href="#ad-hoc" title="Permalink to this headline">¶</a></h2>
+<p>To run an ad-hoc command, use <cite>ansible</cite>. Examples:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ansible all -m ping
+# as bruce
+$ ansible all -m ping -u bruce
+# as bruce, sudoing to root
+$ ansible all -m ping -u bruce --sudo
+# as bruce, sudoing to batman
+$ ansible all -m ping -u bruce --sdo --sudo-user batman
+$ ansible all -a &quot;/bin/echo hello&quot;
+</pre></div>
+</div>
+<p>Help:</p>
+<div class="highlight-python"><div class="highlight"><pre>Usage: ansible &lt;host-pattern&gt; [options]
+
+Options:
+  -a MODULE_ARGS, --args=MODULE_ARGS
+                        module arguments
+  -k, --ask-pass        ask for SSH password
+  --ask-su-pass         ask for su password
+  -K, --ask-sudo-pass   ask for sudo password
+  --ask-vault-pass      ask for vault password
+  -B SECONDS, --background=SECONDS
+                        run asynchronously, failing after X seconds
+                        (default=N/A)
+  -C, --check           don&#39;t make any changes; instead, try to predict some
+                        of the changes that may occur
+  -c CONNECTION, --connection=CONNECTION
+                        connection type to use (default=smart)
+  -f FORKS, --forks=FORKS
+                        specify number of parallel processes to use
+                        (default=5)
+  -h, --help            show this help message and exit
+  -i INVENTORY, --inventory-file=INVENTORY
+                        specify inventory host file
+                        (default=/etc/ansible/hosts)
+  -l SUBSET, --limit=SUBSET
+                        further limit selected hosts to an additional pattern
+  --list-hosts          outputs a list of matching hosts; does not execute
+                        anything else
+  -m MODULE_NAME, --module-name=MODULE_NAME
+                        module name to execute (default=command)
+  -M MODULE_PATH, --module-path=MODULE_PATH
+                        specify path(s) to module library
+                        (default=/usr/share/ansible/)
+  -o, --one-line        condense output
+  -P POLL_INTERVAL, --poll=POLL_INTERVAL
+                        set the poll interval if using -B (default=15)
+  --private-key=PRIVATE_KEY_FILE
+                        use this file to authenticate the connection
+  -S, --su              run operations with su
+  -R SU_USER, --su-user=SU_USER
+                        run operations with su as this user (default=root)
+  -s, --sudo            run operations with sudo (nopasswd)
+  -U SUDO_USER, --sudo-user=SUDO_USER
+                        desired sudo user (default=root)
+  -T TIMEOUT, --timeout=TIMEOUT
+                        override the SSH timeout in seconds (default=10)
+  -t TREE, --tree=TREE  log output to this directory
+  -u REMOTE_USER, --user=REMOTE_USER
+                        connect as this user (default=poirier)
+  --vault-password-file=VAULT_PASSWORD_FILE
+                        vault password file
+  -v, --verbose         verbose mode (-vvv for more, -vvvv to enable
+                        connection debugging)
+  --version             show program&#39;s version number and exit
+</pre></div>
+</div>
+</div>
+<div class="section" id="playbooks">
+<h2>Playbooks<a class="headerlink" href="#playbooks" title="Permalink to this headline">¶</a></h2>
+<p>To run a playbook, use ansible-playbook:</p>
+<div class="highlight-python"><div class="highlight"><pre>Usage: ansible-playbook playbook.yml [options]
+
+Options:
+  -k, --ask-pass        ask for SSH password
+  --ask-su-pass         ask for su password
+  -K, --ask-sudo-pass   ask for sudo password
+  --ask-vault-pass      ask for vault password
+  -C, --check           don&#39;t make any changes; instead, try to predict some
+                        of the changes that may occur
+  -c CONNECTION, --connection=CONNECTION
+                        connection type to use (default=smart)
+  -D, --diff            when changing (small) files and templates, show the
+                        differences in those files; works great with --check
+  -e EXTRA_VARS, --extra-vars=EXTRA_VARS
+                        set additional variables as key=value or YAML/JSON
+  --force-handlers      run handlers even if a task fails
+  -f FORKS, --forks=FORKS
+                        specify number of parallel processes to use
+                        (default=5)
+  -h, --help            show this help message and exit
+  -i INVENTORY, --inventory-file=INVENTORY
+                        specify inventory host file
+                        (default=/etc/ansible/hosts)
+  -l SUBSET, --limit=SUBSET
+                        further limit selected hosts to an additional pattern
+  --list-hosts          outputs a list of matching hosts; does not execute
+                        anything else
+  --list-tasks          list all tasks that would be executed
+  -M MODULE_PATH, --module-path=MODULE_PATH
+                        specify path(s) to module library
+                        (default=/usr/share/ansible/)
+  --private-key=PRIVATE_KEY_FILE
+                        use this file to authenticate the connection
+  --skip-tags=SKIP_TAGS
+                        only run plays and tasks whose tags do not match these
+                        values
+  --start-at-task=START_AT
+                        start the playbook at the task matching this name
+  --step                one-step-at-a-time: confirm each task before running
+  -S, --su              run operations with su
+  -R SU_USER, --su-user=SU_USER
+                        run operations with su as this user (default=root)
+  -s, --sudo            run operations with sudo (nopasswd)
+  -U SUDO_USER, --sudo-user=SUDO_USER
+                        desired sudo user (default=root)
+  --syntax-check        perform a syntax check on the playbook, but do not
+                        execute it
+  -t TAGS, --tags=TAGS  only run plays and tasks tagged with these values
+  -T TIMEOUT, --timeout=TIMEOUT
+                        override the SSH timeout in seconds (default=10)
+  -u REMOTE_USER, --user=REMOTE_USER
+                        connect as this user (default=poirier)
+  --vault-password-file=VAULT_PASSWORD_FILE
+                        vault password file
+  -v, --verbose         verbose mode (-vvv for more, -vvvv to enable
+                        connection debugging)
+  --version             show program&#39;s version number and exit
+</pre></div>
+</div>
+</div>
+<div class="section" id="hosts-pulling-config">
+<h2>Hosts pulling config<a class="headerlink" href="#hosts-pulling-config" title="Permalink to this headline">¶</a></h2>
+<p>Ansible-pull is a small script that will checkout a repo of configuration instructions from git, and then run ansible-playbook against that content.</p>
+<p>Assuming you load balance your checkout location, ansible-pull scales essentially infinitely.</p>
+<p>Help:</p>
+<div class="highlight-python"><div class="highlight"><pre>Usage: ansible-pull [options] [playbook.yml]
+
+Options:
+  -K, --ask-sudo-pass   ask for sudo password
+  -C CHECKOUT, --checkout=CHECKOUT
+                        branch/tag/commit to checkout.  Defaults to behavior
+                        of repository module.
+  -d DEST, --directory=DEST
+                        directory to checkout repository to
+  -e EXTRA_VARS, --extra-vars=EXTRA_VARS
+                        set additional variables as key=value or YAML/JSON
+  -f, --force           run the playbook even if the repository could not be
+                        updated
+  -h, --help            show this help message and exit
+  -i INVENTORY, --inventory-file=INVENTORY
+                        location of the inventory host file
+  -m MODULE_NAME, --module-name=MODULE_NAME
+                        Module name used to check out repository.  Default is
+                        git.
+  -o, --only-if-changed
+                        only run the playbook if the repository has been
+                        updated
+  --purge               purge checkout after playbook run
+  -s SLEEP, --sleep=SLEEP
+                        sleep for random interval (between 0 and n number of
+                        seconds) before starting. this is a useful way to
+                        disperse git requests
+  -U URL, --url=URL     URL of the playbook repository
+  --vault-password-file=VAULT_PASSWORD_FILE
+                        vault password file
+  -v, --verbose         Pass -vvvv to ansible-playbook
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Ansible Cheatsheet</a></h1>
+
+
+
+<p class="blurb">Things that I'm always looking up when using Ansible</p>
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=poirier&repo=ansible-cheatsheet&type=watch&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inventory.html">Inventory</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Invoking</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ad-hoc">Ad-hoc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#playbooks">Playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hosts-pulling-config">Hosts pulling config</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="playbook.html">Playbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role.html">Roles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task.html">Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Dan Poirier.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.4</a>
+      
+      |
+      <a href="_sources/invoking.txt"
+          rel="nofollow">Page source</a></li>
+    </div>
+
+    
+
+    
+  </body>
+</html>

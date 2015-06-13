@@ -1,236 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Inventory &mdash; Ansible Cheatsheet 0.1 documentation</title>
-  
-
-  
-  
-
-  
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
-  
-  
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="Ansible Cheatsheet 0.1 documentation" href="index.html"/>
-        <link rel="next" title="Invoking" href="invoking.html"/>
-        <link rel="prev" title="Configuration" href="configuration.html"/> 
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-
+    <title>Inventory &mdash; Ansible Cheatsheet 1.1 documentation</title>
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        <a href="index.html" class="fa fa-home"> Ansible Cheatsheet</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-      </div>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Ansible Cheatsheet 1.1 documentation" href="index.html" />
+    <link rel="next" title="Invoking" href="invoking.html" />
+    <link rel="prev" title="Configuration" href="configuration.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
-        
-            <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="configuration.html#configuration-file">Configuration file</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Inventory</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#inventory-directory">Inventory directory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#inventory-file">Inventory file</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="invoking.html">Invoking</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="invoking.html#ad-hoc">Ad-hoc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="invoking.html#playbooks">Playbooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="invoking.html#hosts-pulling-config">Hosts pulling config</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="playbook.html">Playbook</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="playbook.html#playbook-directory">Playbook directory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="playbook.html#id2">Playbook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="playbook.html#playbook-include">Playbook include</a></li>
-<li class="toctree-l2"><a class="reference internal" href="playbook.html#play">Play</a></li>
-<li class="toctree-l2"><a class="reference internal" href="playbook.html#running-a-playbook">Running a playbook</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="role.html">Roles</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="role.html#role">Role</a></li>
-<li class="toctree-l2"><a class="reference internal" href="role.html#role-dependencies-file">Role dependencies file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="role.html#dependency-dictionary">Dependency dictionary</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="task.html">Task</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="task.html#tasks-file">Tasks file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task.html#task-include">Task include</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task.html#id3">Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task.html#handler">Handler</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="variables.html#id1">Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="variables.html#variables-file">Variables file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="variables.html#variables-files">Variables files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="variables.html#facts">Facts</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
-</ul>
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="invoking.html" title="Invoking"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="configuration.html" title="Configuration"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Ansible Cheatsheet 1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
 
-        
-      </div>
-      &nbsp;
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Ansible Cheatsheet</a>
-      </nav>
-
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Inventory</li>
-      <li class="wy-breadcrumbs-aside">
-        
-          <a href="_sources/inventory.txt" rel="nofollow"> View page source</a>
-        
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main">
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
             
   <div class="section" id="inventory">
 <h1>Inventory<a class="headerlink" href="#inventory" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="inventory-directory">
 <span id="id1"></span><h2>Inventory directory<a class="headerlink" href="#inventory-directory" title="Permalink to this headline">¶</a></h2>
-<p>Whatever directory the <a class="reference internal" href="#inventory-file"><em>Inventory file</em></a> is in.</p>
+<p>Whatever directory the <a class="reference internal" href="#inventory-file"><span>Inventory file</span></a> is in.</p>
 </div>
 <div class="section" id="inventory-file">
 <span id="id2"></span><h2>Inventory file<a class="headerlink" href="#inventory-file" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>Default</dt>
-<dd><tt class="docutils literal"><span class="pre">/etc/ansible/hosts</span></tt></dd>
+<dd><code class="docutils literal"><span class="pre">/etc/ansible/hosts</span></code></dd>
 <dt>Change</dt>
-<dd><p class="first">set <tt class="docutils literal"><span class="pre">ANSIBLE_HOSTS</span></tt> in environment</p>
-<p><tt class="docutils literal"><span class="pre">ansible-playbook</span> <span class="pre">-i</span> <span class="pre">&lt;inventoryfile&gt;</span> <span class="pre">...</span></tt></p>
-<p class="last">set <a class="reference internal" href="configuration.html#hostfile"><em>hostfile</em></a> in configuration</p>
+<dd><p class="first">set <code class="docutils literal"><span class="pre">ANSIBLE_HOSTS</span></code> in environment</p>
+<p><code class="docutils literal"><span class="pre">ansible-playbook</span> <span class="pre">-i</span> <span class="pre">&lt;inventoryfile&gt;</span> <span class="pre">...</span></code></p>
+<p class="last">set <a class="reference internal" href="configuration.html#hostfile"><span>hostfile</span></a> in configuration</p>
 </dd>
 <dt>Syntax</dt>
 <dd>.ini file, except initial lines don&#8217;t need to be in a section</dd>
 </dl>
 <p>The inventory file is basically a list of hostnames or IP addresses,
-one per line. Can include port with <tt class="docutils literal"><span class="pre">hostname:port</span></tt> or <tt class="docutils literal"><span class="pre">address:port</span></tt>.</p>
-<p>Ranges: Including <tt class="docutils literal"><span class="pre">[m:n]</span></tt> in a line will repeat the line for every
-value from <tt class="docutils literal"><span class="pre">m</span></tt> through <tt class="docutils literal"><span class="pre">n</span></tt>.  <tt class="docutils literal"><span class="pre">m</span></tt> and <tt class="docutils literal"><span class="pre">n</span></tt> can be numbers or letters.</p>
-<p>Host <a class="reference internal" href="variables.html#id1"><em>Variables</em></a>: Can specify per-host options after hostname on the
-same line.  E.g.  <tt class="docutils literal"><span class="pre">jumper</span> <span class="pre">ansible_ssh_port=5555</span>
-<span class="pre">ansible_ssh_host=192.168.1.50</span></tt>.  See also <a class="reference internal" href="variables.html#variables-files"><em>Variables files</em></a>.</p>
-<p>Group <a class="reference internal" href="variables.html#id1"><em>Variables</em></a>: add <tt class="docutils literal"><span class="pre">[groupname:vars]</span></tt> section and put var definitions in it, one per line.  See also <a class="reference internal" href="variables.html#variables-files"><em>Variables files</em></a>.</p>
-<p>Groups of groups: add <tt class="docutils literal"><span class="pre">[newgroupname:children]</span></tt> and put other group names in it, one per line.</p>
+one per line. Can include port with <code class="docutils literal"><span class="pre">hostname:port</span></code> or <code class="docutils literal"><span class="pre">address:port</span></code>.</p>
+<p>Ranges: Including <code class="docutils literal"><span class="pre">[m:n]</span></code> in a line will repeat the line for every
+value from <code class="docutils literal"><span class="pre">m</span></code> through <code class="docutils literal"><span class="pre">n</span></code>.  <code class="docutils literal"><span class="pre">m</span></code> and <code class="docutils literal"><span class="pre">n</span></code> can be numbers or letters.</p>
+<p>Host <a class="reference internal" href="variables.html#id1"><span>Variables</span></a>: Can specify per-host options after hostname on the
+same line.  E.g.  <code class="docutils literal"><span class="pre">jumper</span> <span class="pre">ansible_ssh_port=5555</span>
+<span class="pre">ansible_ssh_host=192.168.1.50</span></code>.  See also <a class="reference internal" href="variables.html#variables-files"><span>Variables files</span></a>.</p>
+<p>Group <a class="reference internal" href="variables.html#id1"><span>Variables</span></a>: add <code class="docutils literal"><span class="pre">[groupname:vars]</span></code> section and put var definitions in it, one per line.  See also <a class="reference internal" href="variables.html#variables-files"><span>Variables files</span></a>.</p>
+<p>Groups of groups: add <code class="docutils literal"><span class="pre">[newgroupname:children]</span></code> and put other group names in it, one per line.</p>
 </div>
 </div>
 
 
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="invoking.html" class="btn btn-neutral float-right" title="Invoking"/>Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="configuration.html" class="btn btn-neutral" title="Configuration"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2015, Dan Poirier.
-    </p>
-  </div>
-
-  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
-</footer>
         </div>
       </div>
-
-    </section>
-
-  </div>
-  
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Ansible Cheatsheet</a></h1>
 
 
-  
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
+<p class="blurb">Things that I'm always looking up when using Ansible</p>
 
-  
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
 
-  
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
-   
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=poirier&repo=ansible-cheatsheet&type=watch&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
 
-</body>
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Inventory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#inventory-directory">Inventory directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inventory-file">Inventory file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="invoking.html">Invoking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbook.html">Playbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role.html">Roles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task.html">Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Dan Poirier.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.4</a>
+      
+      |
+      <a href="_sources/inventory.txt"
+          rel="nofollow">Page source</a></li>
+    </div>
+
+    
+
+    
+  </body>
 </html>
