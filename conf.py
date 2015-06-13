@@ -15,7 +15,11 @@
 import sys
 import os
 
-import alabaster
+# on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+
+if not on_rtd:
+    import alabaster
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -33,8 +37,9 @@ needs_sphinx = '1.0'
 extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
-    'alabaster'
 ]
+if not on_rtd:
+    extensions.append('alabaster')
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -101,93 +106,93 @@ pygments_style = 'sphinx'
 
 
 # -- Options for HTML output ----------------------------------------------
+if not on_rtd:
+    # The theme to use for HTML and HTML Help pages.  See the documentation for
+    # a list of builtin themes.
+    html_theme = 'alabaster'
 
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-html_theme = 'alabaster'
+    # Theme options are theme-specific and customize the look and feel of a theme
+    # further.  For a list of options available for each theme, see the
+    # documentation.
+    html_theme_options = {
+        'description': "Things that I'm always looking up when using Ansible",
+        'github_user': "poirier",
+        'github_repo': "ansible-cheatsheet"
+    }
 
-# Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
-# documentation.
-html_theme_options = {
-    'description': "Things that I'm always looking up when using Ansible",
-    'github_user': "poirier",
-    'github_repo': "ansible-cheatsheet"
-}
+    # Add any paths that contain custom themes here, relative to this directory.
+    html_theme_path = [alabaster.get_path()]
 
-# Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = [alabaster.get_path()]
+    # The name for this set of Sphinx documents.  If None, it defaults to
+    # "<project> v<release> documentation".
+    #html_title = None
 
-# The name for this set of Sphinx documents.  If None, it defaults to
-# "<project> v<release> documentation".
-#html_title = None
+    # A shorter title for the navigation bar.  Default is the same as html_title.
+    #html_short_title = None
 
-# A shorter title for the navigation bar.  Default is the same as html_title.
-#html_short_title = None
+    # The name of an image file (relative to this directory) to place at the top
+    # of the sidebar.
+    #html_logo = None
 
-# The name of an image file (relative to this directory) to place at the top
-# of the sidebar.
-#html_logo = None
+    # The name of an image file (within the static path) to use as favicon of the
+    # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
+    # pixels large.
+    #html_favicon = None
 
-# The name of an image file (within the static path) to use as favicon of the
-# docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
-# pixels large.
-#html_favicon = None
+    # Add any paths that contain custom static files (such as style sheets) here,
+    # relative to this directory. They are copied after the builtin static files,
+    # so a file named "default.css" will overwrite the builtin "default.css".
+    html_static_path = ['_static']
 
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+    # Add any extra paths that contain custom files (such as robots.txt or
+    # .htaccess) here, relative to this directory. These files are copied
+    # directly to the root of the documentation.
+    #html_extra_path = []
 
-# Add any extra paths that contain custom files (such as robots.txt or
-# .htaccess) here, relative to this directory. These files are copied
-# directly to the root of the documentation.
-#html_extra_path = []
+    # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
+    # using the given strftime format.
+    #html_last_updated_fmt = '%b %d, %Y'
 
-# If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
-# using the given strftime format.
-#html_last_updated_fmt = '%b %d, %Y'
+    # If true, SmartyPants will be used to convert quotes and dashes to
+    # typographically correct entities.
+    #html_use_smartypants = True
 
-# If true, SmartyPants will be used to convert quotes and dashes to
-# typographically correct entities.
-#html_use_smartypants = True
+    # Custom sidebar templates, maps document names to template names.
+    html_sidebars = {
+        '**': [
+            'about.html', 'navigation.html', 'searchbox.html', 'donate.html',
+        ]
+    }
 
-# Custom sidebar templates, maps document names to template names.
-html_sidebars = {
-    '**': [
-        'about.html', 'navigation.html', 'searchbox.html', 'donate.html',
-    ]
-}
+    # Additional templates that should be rendered to pages, maps page names to
+    # template names.
+    #html_additional_pages = {}
 
-# Additional templates that should be rendered to pages, maps page names to
-# template names.
-#html_additional_pages = {}
+    # If false, no module index is generated.
+    #html_domain_indices = True
 
-# If false, no module index is generated.
-#html_domain_indices = True
+    # If false, no index is generated.
+    #html_use_index = True
 
-# If false, no index is generated.
-#html_use_index = True
+    # If true, the index is split into individual pages for each letter.
+    #html_split_index = False
 
-# If true, the index is split into individual pages for each letter.
-#html_split_index = False
+    # If true, links to the reST sources are added to the pages.
+    #html_show_sourcelink = True
 
-# If true, links to the reST sources are added to the pages.
-#html_show_sourcelink = True
+    # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
+    #html_show_sphinx = True
 
-# If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
-#html_show_sphinx = True
+    # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
+    #html_show_copyright = True
 
-# If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
-#html_show_copyright = True
+    # If true, an OpenSearch description file will be output, and all pages will
+    # contain a <link> tag referring to it.  The value of this option must be the
+    # base URL from which the finished HTML is served.
+    #html_use_opensearch = ''
 
-# If true, an OpenSearch description file will be output, and all pages will
-# contain a <link> tag referring to it.  The value of this option must be the
-# base URL from which the finished HTML is served.
-#html_use_opensearch = ''
-
-# This is the file name suffix for HTML files (e.g. ".xhtml").
-#html_file_suffix = None
+    # This is the file name suffix for HTML files (e.g. ".xhtml").
+    #html_file_suffix = None
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'AnsibleCheatsheetdoc'
@@ -347,14 +352,3 @@ epub_exclude_files = ['search.html']
 intersphinx_mapping = {
     'ansible': ('http://docs.ansible.com', None),
 }
-
-
-# on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org
-on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
-
-if not on_rtd:  # only import and set the theme if we're building docs locally
-    import sphinx_rtd_theme
-    html_theme = 'sphinx_rtd_theme'
-    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-
-# otherwise, readthedocs.org uses their theme by default, so no need to specify it
