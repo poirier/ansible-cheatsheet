@@ -8,6 +8,7 @@ Things I'm always wanting to look up about
 
   configuration
   inventory
+  invoking
   playbook
   role
   task
