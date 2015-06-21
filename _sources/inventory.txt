@@ -40,6 +40,15 @@ Group :ref:`variables`: add ``[groupname:vars]`` section and put var definitions
 
 Groups of groups: add ``[newgroupname:children]`` and put other group names in it, one per line.
 
+Dynamic inventory
+-----------------
+
+If the inventory file is executable, then instead of reading it
+as a .ini file, Ansible will run it and use its output - but the
+output is not in the same format as a non-executable .ini file would
+be. See `the docs <http://docs.ansible.com/developing_inventory.html>`_
+for all the details.
+
 .. _host-spec:
 
 Host specs
@@ -66,7 +75,7 @@ Regexes:
 
 Expressions:
 
-    ``spec1:spec2`` - both spec1 and spec2
+    ``spec1:spec2`` - all hosts matched by spec1 or spec2
 
     ``spec1:!spec2`` - hosts matched by spec1, except those matched by spec2
 
