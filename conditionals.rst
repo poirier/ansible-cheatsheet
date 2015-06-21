@@ -8,7 +8,7 @@ See http://docs.ansible.com/playbooks_conditionals.html
 Conditionals with host specs
 ----------------------------
 
-There are a number of places you can provide a :ref:`host spec` to
+There are a number of places you can provide a :ref:`host-spec` to
 limit which hosts something is applied to.
 
 Ad-hoc command line
