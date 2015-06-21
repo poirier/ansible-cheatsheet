@@ -24,8 +24,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Ansible Cheatsheet 1.1 documentation" href="index.html" />
-    <link rel="next" title="Playbook" href="playbook.html" />
-    <link rel="prev" title="Inventory" href="inventory.html" />
+    <link rel="next" title="Organizing hosts, playbooks, etc" href="organizing.html" />
+    <link rel="prev" title="Loops" href="loops.html" />
    
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
@@ -39,10 +39,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="playbook.html" title="Playbook"
+          <a href="organizing.html" title="Organizing hosts, playbooks, etc"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="inventory.html" title="Inventory"
+          <a href="loops.html" title="Loops"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Ansible Cheatsheet 1.1 documentation</a> &raquo;</li> 
       </ul>
@@ -55,8 +55,8 @@
             
   <div class="section" id="invoking">
 <h1>Invoking<a class="headerlink" href="#invoking" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="ad-hoc">
-<h2>Ad-hoc<a class="headerlink" href="#ad-hoc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ansible-ad-hoc-command">
+<span id="ansible-command"></span><h2>Ansible (ad-hoc) command<a class="headerlink" href="#ansible-ad-hoc-command" title="Permalink to this headline">¶</a></h2>
 <p>To run an ad-hoc command, use <cite>ansible</cite>. Examples:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ ansible all -m ping
 # as bruce
@@ -125,8 +125,8 @@ Options:
 </pre></div>
 </div>
 </div>
-<div class="section" id="playbooks">
-<h2>Playbooks<a class="headerlink" href="#playbooks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ansible-playbook-command">
+<span id="ansible-playbook"></span><h2>ansible-playbook command<a class="headerlink" href="#ansible-playbook-command" title="Permalink to this headline">¶</a></h2>
 <p>To run a playbook, use ansible-playbook:</p>
 <div class="highlight-python"><div class="highlight"><pre>Usage: ansible-playbook playbook.yml [options]
 
@@ -253,18 +253,21 @@ Options:
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inventory.html">Inventory</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Invoking</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#ad-hoc">Ad-hoc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#playbooks">Playbooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#hosts-pulling-config">Hosts pulling config</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="playbook.html">Playbook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role.html">Roles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task.html">Task</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Invoking</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ansible-ad-hoc-command">Ansible (ad-hoc) command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ansible-playbook-command">ansible-playbook command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hosts-pulling-config">Hosts pulling config</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="organizing.html">Organizing hosts, playbooks, etc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing Ansible files</a></li>
 </ul>
 
 

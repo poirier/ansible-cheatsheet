@@ -8,13 +8,16 @@ Things I'm always wanting to look up about
 
   configuration
   inventory
-  invoking
+  conditionals
   playbook
   role
   task
   variables
   conditionals
   loops
+  invoking
+  organizing
+  sharing
 
 
 .. Indices and tables

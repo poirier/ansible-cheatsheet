@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Organizing hosts, playbooks, etc &mdash; Ansible Cheatsheet 1.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Ansible Cheatsheet 1.1 documentation" href="index.html" />
+    <link rel="next" title="Sharing Ansible files" href="sharing.html" />
+    <link rel="prev" title="Invoking" href="invoking.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="sharing.html" title="Sharing Ansible files"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="invoking.html" title="Invoking"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Ansible Cheatsheet 1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="organizing-hosts-playbooks-etc">
+<span id="organizing"></span><h1>Organizing hosts, playbooks, etc<a class="headerlink" href="#organizing-hosts-playbooks-etc" title="Permalink to this headline">¶</a></h1>
+<p>There&#8217;s an extended example in the Ansible docs that
+<a class="reference external" href="http://docs.ansible.com/playbooks_best_practices.html#how-to-differentiate-stage-vs-production">starts here</a>.</p>
+<p>Here&#8217;s a shorter recapitulation of it, with my own explanations.</p>
+<div class="section" id="inventory-files">
+<h2>Inventory files<a class="headerlink" href="#inventory-files" title="Permalink to this headline">¶</a></h2>
+<p>Make an inventory file for each environment, e.g. <cite>staging</cite> and <cite>production</cite>.
+Each inventory file should define the same groups, but of course with different
+hosts in them.  (I&#8217;m assuming you&#8217;re not running staging and production
+on the same hosts; you&#8217;d have to modify this to do that.)</p>
+</div>
+<div class="section" id="groups">
+<h2>Groups<a class="headerlink" href="#groups" title="Permalink to this headline">¶</a></h2>
+<p>In each inventory file, define groups based on the &#8220;roles&#8221; the servers
+play <em>and</em> any other differentiation that might require us to apply
+different variables to them. (I use &#8220;role&#8221; here to mean role in the conventional
+sense, not an Ansible role):</p>
+<div class="highlight-python"><div class="highlight"><pre>[webservers-east]
+web1
+
+[webservers-west]
+web2
+
+[webservers:children]
+webservers-east
+webservers-west
+
+[dbservers-east]
+db1
+
+[dbservers-west]
+db2
+
+[dbservers:children]
+dbservers-east
+dbservers-west
+
+[servers-east:children]
+dbservers-east
+webservers-east
+
+[servers-west:children]
+dbservers-west
+webservers-west
+</pre></div>
+</div>
+</div>
+<div class="section" id="group-variables">
+<h2>Group variables<a class="headerlink" href="#group-variables" title="Permalink to this headline">¶</a></h2>
+<p>Define variables for groups in group variable files. You might use
+these for variables that only make sense for some &#8220;roles&#8221;:</p>
+<div class="highlight-python"><div class="highlight"><pre>---
+# file: group_vars/webservers
+apacheMaxRequestsPerChild: 3000
+apacheMaxClients: 900
+</pre></div>
+</div>
+<p>or for variables that differ between machines with the same &#8220;role&#8221;:</p>
+<div class="highlight-python"><div class="highlight"><pre>---
+# file: group_vars/servers-east
+ntp: ntp-atlanta.example.com
+backup: backup-atlanta.example.com
+</pre></div>
+</div>
+<p>Default or common values can go in a group variables file too:</p>
+<div class="highlight-python"><div class="highlight"><pre>---
+# file: group_vars/all
+ntp: ntp-boston.example.com
+backup: backup-boston.example.com
+</pre></div>
+</div>
+</div>
+<div class="section" id="playbooks">
+<h2>Playbooks<a class="headerlink" href="#playbooks" title="Permalink to this headline">¶</a></h2>
+<p>Have a top-level playbook, <cite>site.yml</cite>, that includes all the other
+playbooks mentioned here:</p>
+<div class="highlight-python"><div class="highlight"><pre>---
+# file: site.yml
+- include: webservers.yml
+- include: dbservers.yml
+</pre></div>
+</div>
+<p>Then have a playbook for each &#8220;role&#8221; group:</p>
+<div class="highlight-python"><div class="highlight"><pre>---
+# file: webservers.yml
+- hosts: webservers
+  roles:
+    - common
+    - webtier
+</pre></div>
+</div>
+<p>and:</p>
+<div class="highlight-python"><div class="highlight"><pre>---
+# file: dbservers.yml
+- hosts: dbservers
+  roles:
+    - common
+    - dbtier
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-use-this-organization">
+<h2>How to use this organization<a class="headerlink" href="#how-to-use-this-organization" title="Permalink to this headline">¶</a></h2>
+<p>Update our production webservers:</p>
+<div class="highlight-python"><div class="highlight"><pre>ansible-playbook -i production webservers.yml
+</pre></div>
+</div>
+<p>Update all our staging servers:</p>
+<div class="highlight-python"><div class="highlight"><pre>ansible-playbook -i staging site.yml
+</pre></div>
+</div>
+<p>Update our production webservers, but only in the eastern data center:</p>
+<div class="highlight-python"><div class="highlight"><pre>ansible-playbook -i production webservers.yml --limit servers-east
+</pre></div>
+</div>
+<p>There are a lot more ways to limit things, so you can do things like
+a rolling update to a few servers at a time, but you&#8217;ll have to go read
+the Ansible docs for those.</p>
+</div>
+<div class="section" id="applying-subsets-of-tasks-using-tags">
+<h2>Applying subsets of tasks using tags<a class="headerlink" href="#applying-subsets-of-tasks-using-tags" title="Permalink to this headline">¶</a></h2>
+<p>This requires more work up front, but might be useful in some cases.</p>
+<p>Add tags to individual tasks using the <code class="docutils literal"><span class="pre">tags</span></code> key, then
+use the <code class="docutils literal"><span class="pre">--tags</span></code> option when running ansible to further limit what
+gets applied to only the tasks that have the specified tag or tags:</p>
+<div class="highlight-python"><div class="highlight"><pre>ansible-playbook -i production site.yml --tags ntp
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Ansible Cheatsheet</a></h1>
+
+
+
+<p class="blurb">Things that I'm always looking up when using Ansible</p>
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=poirier&repo=ansible-cheatsheet&type=watch&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inventory.html">Inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playbook.html">Playbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role.html">Roles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task.html">Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="invoking.html">Invoking</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Organizing hosts, playbooks, etc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#inventory-files">Inventory files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#groups">Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#group-variables">Group variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#playbooks">Playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use-this-organization">How to use this organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#applying-subsets-of-tasks-using-tags">Applying subsets of tasks using tags</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing Ansible files</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Dan Poirier.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.4</a>
+      
+      |
+      <a href="_sources/organizing.txt"
+          rel="nofollow">Page source</a></li>
+    </div>
+
+    
+
+    
+  </body>
+</html>

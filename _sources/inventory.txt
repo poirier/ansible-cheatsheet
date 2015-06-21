@@ -40,3 +40,37 @@ Group :ref:`variables`: add ``[groupname:vars]`` section and put var definitions
 
 Groups of groups: add ``[newgroupname:children]`` and put other group names in it, one per line.
 
+.. _host-spec:
+
+Host specs
+----------
+
+You can build :ref:`host-conditionals` with a host spec,
+also called a `pattern <http://docs.ansible.com/intro_patterns.html>`_
+in Ansible.
+
+All hosts:
+    ``*`` or ``all``
+
+One specific host:
+    ``hostname`` or ``ipaddress``
+
+One group:
+    ``groupname``
+
+Wildcard globs:
+    ``*.example.com`` or ``127.0.*.3``
+
+Regexes:
+    ``~(web|db).example.com``
+
+Expressions:
+
+    ``spec1:spec2`` - both spec1 and spec2
+
+    ``spec1:!spec2`` - hosts matched by spec1, except those matched by spec2
+
+    ``spec1:&spec`` - hosts matched by both spec1 and spec2
+
+
+
