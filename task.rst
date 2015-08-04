@@ -46,6 +46,15 @@ Or use this more compact but apparently equivalent syntax::
 
     - { include: wordpress.yml, wp_user: timmy, ssh_keys: [ 'keys/one.txt', 'keys/two.txt' ] }
 
+You can do the equivalent of a conditional include by adding ``when``::
+
+    - include: othertask.yml
+      when: "'reticulating splines' in output"
+
+This is implemented by including the task file but applying the when
+statement to every task in it, so you'll see all the individual tasks
+being skipped.
+
 .. _task:
 
 Task
