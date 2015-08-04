@@ -51,7 +51,8 @@ those directories, you can put a single :ref:`variables-file` with the same
 name as a host or group (respectively) and Ansible will use those
 :ref:`variables` definitions.
 
-Or a file named ``all`` that will be used for all hosts or groups.
+Or a file named ``all`` in ``group_vars`` (but not ``host_vars``)
+that will be used for all hosts or groups.
 
 Or you can create a directory with the same name as a host or group
 and Ansible will use all the files in that directory as

@@ -66,6 +66,14 @@ allow-duplicates
     as a dependency more than once. Set to yes if you want
     to list the same role with different variables.
 
+Example::
+
+    ---
+    # diyclient/meta/main.yml
+    dependencies:
+     - { role: version_control }
+
+
 .. _dependency-dictionary:
 
 Dependency dictionary

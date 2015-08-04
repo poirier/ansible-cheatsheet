@@ -95,7 +95,8 @@ for directories named <code class="docutils literal"><span class="pre">host_vars
 those directories, you can put a single <a class="reference internal" href="#variables-file"><span>Variables file</span></a> with the same
 name as a host or group (respectively) and Ansible will use those
 <a class="reference internal" href="#id1"><span>Variables</span></a> definitions.</p>
-<p>Or a file named <code class="docutils literal"><span class="pre">all</span></code> that will be used for all hosts or groups.</p>
+<p>Or a file named <code class="docutils literal"><span class="pre">all</span></code> in <code class="docutils literal"><span class="pre">group_vars</span></code> (but not <code class="docutils literal"><span class="pre">host_vars</span></code>)
+that will be used for all hosts or groups.</p>
 <p>Or you can create a directory with the same name as a host or group
 and Ansible will use all the files in that directory as
 <a class="reference internal" href="#variables-file"><span>Variables file</span></a> s.</p>

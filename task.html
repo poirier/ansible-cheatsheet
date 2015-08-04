@@ -95,6 +95,14 @@ more complicated values:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="o">-</span> <span class="p">{</span> <span class="n">include</span><span class="p">:</span> <span class="n">wordpress</span><span class="o">.</span><span class="n">yml</span><span class="p">,</span> <span class="n">wp_user</span><span class="p">:</span> <span class="n">timmy</span><span class="p">,</span> <span class="n">ssh_keys</span><span class="p">:</span> <span class="p">[</span> <span class="s">&#39;keys/one.txt&#39;</span><span class="p">,</span> <span class="s">&#39;keys/two.txt&#39;</span> <span class="p">]</span> <span class="p">}</span>
 </pre></div>
 </div>
+<p>You can do the equivalent of a conditional include by adding <code class="docutils literal"><span class="pre">when</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre>- include: othertask.yml
+  when: &quot;&#39;reticulating splines&#39; in output&quot;
+</pre></div>
+</div>
+<p>This is implemented by including the task file but applying the when
+statement to every task in it, so you&#8217;ll see all the individual tasks
+being skipped.</p>
 </div>
 <div class="section" id="id3">
 <span id="id4"></span><h2>Task<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
