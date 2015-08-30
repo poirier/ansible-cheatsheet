@@ -73,12 +73,27 @@ Optional keys that can be used on any task:
 
 environment
     dictionary (in YAML, or variable containing dictionary)
+ignore_errors
+    if true, continue even if task fails
+register <varname>
+    store result of task in <varname>.  See also ``when`` for some ways to use.
 remote_user
     user to login as remotely
 sudo
     yes|no
 sudo_user
     user to sudo to remotely
+when
+    expression `controlling whether task is executed <https://docs.ansible.com/ansible/playbooks_conditionals.html#the-when-statement>`_::
+
+        when: <varname>
+        when: not <varname>
+
+    Special filters for checking result of a prior task::
+
+        when: <varname>|failed
+        when: <varname>|skipped
+        when: <varname>|success
 
 Additional keys might be required and optional depending on the module being used.
 

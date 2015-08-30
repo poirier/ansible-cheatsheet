@@ -22,6 +22,8 @@ And here's the precedence order:
 
 * extra vars (-e in the command line) always win
 * then comes connection variables defined in inventory (ansible_ssh_user, etc)
+   * Do NOT put things like ansible_sudo=[yes|no] here because it'll override the values
+     set in plays, tasks, etc. which need to be able to control it themselves
 * then comes "most everything else" (command line switches, vars in play, included vars, role vars, etc)
 * then comes the rest of the variables defined in inventory
 * then comes facts discovered about a system
