@@ -1,10 +1,8 @@
 Invoking
 ========
 
-.. _ansible-command:
-
-Ansible (ad-hoc) command
-------------------------
+Ad-hoc
+------
 
 To run an ad-hoc command, use `ansible`. Examples::
 
@@ -74,10 +72,9 @@ Help::
       --version             show program's version number and exit
 
 
-.. _ansible-playbook:
 
-ansible-playbook command
-------------------------
+Playbooks
+---------
 
 To run a playbook, use ansible-playbook::
 

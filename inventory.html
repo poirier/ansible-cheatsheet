@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Ansible Cheatsheet 1.1 documentation" href="index.html" />
-    <link rel="next" title="Conditionals" href="conditionals.html" />
+    <link rel="next" title="Invoking" href="invoking.html" />
     <link rel="prev" title="Configuration" href="configuration.html" />
    
   
@@ -39,7 +39,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="conditionals.html" title="Conditionals"
+          <a href="invoking.html" title="Invoking"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="configuration.html" title="Configuration"
@@ -67,7 +67,7 @@
 <dt>Change</dt>
 <dd><p class="first">set <code class="docutils literal"><span class="pre">ANSIBLE_HOSTS</span></code> in environment</p>
 <p><code class="docutils literal"><span class="pre">ansible-playbook</span> <span class="pre">-i</span> <span class="pre">&lt;inventoryfile&gt;</span> <span class="pre">...</span></code></p>
-<p class="last">set <a class="reference internal" href="configuration.html#hostfile"><span>hostfile or inventory</span></a> in configuration</p>
+<p class="last">set <a class="reference internal" href="configuration.html#hostfile"><span>hostfile</span></a> in configuration</p>
 </dd>
 <dt>Syntax</dt>
 <dd>.ini file, except initial lines don&#8217;t need to be in a section</dd>
@@ -81,38 +81,6 @@ same line.  E.g.  <code class="docutils literal"><span class="pre">jumper</span>
 <span class="pre">ansible_ssh_host=192.168.1.50</span></code>.  See also <a class="reference internal" href="variables.html#variables-files"><span>Variables files</span></a>.</p>
 <p>Group <a class="reference internal" href="variables.html#id1"><span>Variables</span></a>: add <code class="docutils literal"><span class="pre">[groupname:vars]</span></code> section and put var definitions in it, one per line.  See also <a class="reference internal" href="variables.html#variables-files"><span>Variables files</span></a>.</p>
 <p>Groups of groups: add <code class="docutils literal"><span class="pre">[newgroupname:children]</span></code> and put other group names in it, one per line.</p>
-</div>
-<div class="section" id="dynamic-inventory">
-<h2>Dynamic inventory<a class="headerlink" href="#dynamic-inventory" title="Permalink to this headline">¶</a></h2>
-<p>If the inventory file is executable, then instead of reading it
-as a .ini file, Ansible will run it and use its output - but the
-output is not in the same format as a non-executable .ini file would
-be. See <a class="reference external" href="http://docs.ansible.com/developing_inventory.html">the docs</a>
-for all the details.</p>
-</div>
-<div class="section" id="host-specs">
-<span id="host-spec"></span><h2>Host specs<a class="headerlink" href="#host-specs" title="Permalink to this headline">¶</a></h2>
-<p>You can build <a class="reference internal" href="conditionals.html#host-conditionals"><span>Conditionals with host specs</span></a> with a host spec,
-also called a <a class="reference external" href="http://docs.ansible.com/intro_patterns.html">pattern</a>
-in Ansible.</p>
-<dl class="docutils">
-<dt>All hosts:</dt>
-<dd><code class="docutils literal"><span class="pre">*</span></code> or <code class="docutils literal"><span class="pre">all</span></code></dd>
-<dt>One specific host:</dt>
-<dd><code class="docutils literal"><span class="pre">hostname</span></code> or <code class="docutils literal"><span class="pre">ipaddress</span></code></dd>
-<dt>One group:</dt>
-<dd><code class="docutils literal"><span class="pre">groupname</span></code></dd>
-<dt>Wildcard globs:</dt>
-<dd><code class="docutils literal"><span class="pre">*.example.com</span></code> or <code class="docutils literal"><span class="pre">127.0.*.3</span></code></dd>
-<dt>Regexes:</dt>
-<dd><code class="docutils literal"><span class="pre">~(web|db).example.com</span></code></dd>
-</dl>
-<p>Expressions:</p>
-<blockquote>
-<div><p><code class="docutils literal"><span class="pre">spec1:spec2</span></code> - all hosts matched by spec1 or spec2</p>
-<p><code class="docutils literal"><span class="pre">spec1:!spec2</span></code> - hosts matched by spec1, except those matched by spec2</p>
-<p><code class="docutils literal"><span class="pre">spec1:&amp;spec</span></code> - hosts matched by both spec1 and spec2</p>
-</div></blockquote>
 </div>
 </div>
 
@@ -142,20 +110,15 @@ in Ansible.</p>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Inventory</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#inventory-directory">Inventory directory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#inventory-file">Inventory file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#dynamic-inventory">Dynamic inventory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#host-specs">Host specs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="invoking.html">Invoking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="playbook.html">Playbook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role.html">Roles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task.html">Task</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="invoking.html">Invoking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="organizing.html">Organizing hosts, playbooks, etc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing Ansible files</a></li>
 </ul>
 
 

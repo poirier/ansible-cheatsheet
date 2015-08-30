@@ -95,14 +95,6 @@ more complicated values:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="o">-</span> <span class="p">{</span> <span class="n">include</span><span class="p">:</span> <span class="n">wordpress</span><span class="o">.</span><span class="n">yml</span><span class="p">,</span> <span class="n">wp_user</span><span class="p">:</span> <span class="n">timmy</span><span class="p">,</span> <span class="n">ssh_keys</span><span class="p">:</span> <span class="p">[</span> <span class="s">&#39;keys/one.txt&#39;</span><span class="p">,</span> <span class="s">&#39;keys/two.txt&#39;</span> <span class="p">]</span> <span class="p">}</span>
 </pre></div>
 </div>
-<p>You can do the equivalent of a conditional include by adding <code class="docutils literal"><span class="pre">when</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>- include: othertask.yml
-  when: &quot;&#39;reticulating splines&#39; in output&quot;
-</pre></div>
-</div>
-<p>This is implemented by including the task file but applying the when
-statement to every task in it, so you&#8217;ll see all the individual tasks
-being skipped.</p>
 </div>
 <div class="section" id="id3">
 <span id="id4"></span><h2>Task<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
@@ -127,12 +119,29 @@ otheroption: othervalue   # depending on module
 <dl class="docutils">
 <dt>environment</dt>
 <dd>dictionary (in YAML, or variable containing dictionary)</dd>
+<dt>ignore_errors</dt>
+<dd>if true, continue even if task fails</dd>
+<dt>register &lt;varname&gt;</dt>
+<dd>store result of task in &lt;varname&gt;.  See also <code class="docutils literal"><span class="pre">when</span></code> for some ways to use.</dd>
 <dt>remote_user</dt>
 <dd>user to login as remotely</dd>
 <dt>sudo</dt>
 <dd>yes|no</dd>
 <dt>sudo_user</dt>
 <dd>user to sudo to remotely</dd>
+<dt>when</dt>
+<dd><p class="first">expression <a class="reference external" href="https://docs.ansible.com/ansible/playbooks_conditionals.html#the-when-statement">controlling whether task is executed</a>:</p>
+<div class="highlight-python"><div class="highlight"><pre>when: &lt;varname&gt;
+when: not &lt;varname&gt;
+</pre></div>
+</div>
+<p>Special filters for checking result of a prior task:</p>
+<div class="last highlight-python"><div class="highlight"><pre>when: &lt;varname&gt;|failed
+when: &lt;varname&gt;|skipped
+when: &lt;varname&gt;|success
+</pre></div>
+</div>
+</dd>
 </dl>
 <p>Additional keys might be required and optional depending on the module being used.</p>
 </div>
@@ -166,7 +175,7 @@ otheroption: othervalue   # depending on module
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inventory.html">Inventory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="invoking.html">Invoking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="playbook.html">Playbook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role.html">Roles</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Task</a><ul>
@@ -179,9 +188,6 @@ otheroption: othervalue   # depending on module
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="invoking.html">Invoking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="organizing.html">Organizing hosts, playbooks, etc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing Ansible files</a></li>
 </ul>
 
 

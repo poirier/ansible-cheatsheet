@@ -73,37 +73,23 @@
 </dd>
 </dl>
 <p>Some useful vars in the <code class="docutils literal"><span class="pre">[defaults]</span></code> section:</p>
-<div class="section" id="hostfile-or-inventory">
-<span id="hostfile"></span><h3>hostfile or inventory<a class="headerlink" href="#hostfile-or-inventory" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="hostfile">
+<span id="id2"></span><h3>hostfile<a class="headerlink" href="#hostfile" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>Hostfile is the older, deprecated name; use <cite>inventory</cite> in
-new configurations with Ansible 1.9 and later.</p>
-<p><a class="reference external" href="http://docs.ansible.com/intro_configuration.html#inventory-file">This</a>
-is the default location of the inventory file, script, or directory
-that Ansible will use to determine what hosts it has available to talk to:</p>
-<p>inventory = /etc/ansible/hosts</p>
-<p>You can also specify this on the ansible-playbook command line
-with <cite>-i</cite>.</p>
+<div><p>This is the default location of the inventory file, script, or directory that Ansible will use to determine what hosts it has available to talk to:</p>
+<p>hostfile = /etc/ansible/hosts</p>
 </div></blockquote>
 </div>
 <div class="section" id="roles-path">
-<span id="id2"></span><h3>roles_path<a class="headerlink" href="#roles-path" title="Permalink to this headline">¶</a></h3>
+<span id="id3"></span><h3>roles_path<a class="headerlink" href="#roles-path" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>The <a class="reference external" href="http://docs.ansible.com/intro_configuration.html#roles-path">roles path</a>
-setting indicates additional directories beyond the ‘roles/’ subdirectory
-of a playbook project to search to find Ansible roles. For instance, if
-there was a source control repository of common roles and a different
-repository of playbooks, you might choose to establish a convention to
-checkout roles in /opt/mysite/roles like so:</p>
+<div><p>The roles path indicate additional directories beyond the ‘roles/’ subdirectory of a playbook project to search to find Ansible roles. For instance, if there was a source control repository of common roles and a different repository of playbooks, you might choose to establish a convention to checkout roles in /opt/mysite/roles like so:</p>
 <blockquote>
 <div>roles_path = /opt/mysite/roles</div></blockquote>
-<p>Additional paths can be provided separated by colon characters,
-in the same way as other pathstrings:</p>
+<p>Additional paths can be provided separated by colon characters, in the same way as other pathstrings:</p>
 <blockquote>
 <div>roles_path = /opt/mysite/roles:/opt/othersite/roles</div></blockquote>
-<p>Roles will be first searched for in the playbook directory. Should
-a role not be found, it will indicate all the possible paths that
-were searched.</p>
+<p>Roles will be first searched for in the playbook directory. Should a role not be found, it will indicate all the possible paths that were searched.</p>
 </div></blockquote>
 </div>
 </div>
@@ -133,23 +119,20 @@ were searched.</p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">Configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuration-file">Configuration file</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#hostfile-or-inventory">hostfile or inventory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hostfile">hostfile</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#roles-path">roles_path</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inventory.html">Inventory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="invoking.html">Invoking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="playbook.html">Playbook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role.html">Roles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task.html">Task</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="invoking.html">Invoking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="organizing.html">Organizing hosts, playbooks, etc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing Ansible files</a></li>
 </ul>
 
 

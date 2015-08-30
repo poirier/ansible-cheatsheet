@@ -57,7 +57,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="configuration.html#configuration-file">Configuration file</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="configuration.html#hostfile-or-inventory">hostfile or inventory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#hostfile">hostfile</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration.html#roles-path">roles_path</a></li>
 </ul>
 </li>
@@ -66,17 +66,12 @@
 <li class="toctree-l1"><a class="reference internal" href="inventory.html">Inventory</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="inventory.html#inventory-directory">Inventory directory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inventory.html#inventory-file">Inventory file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inventory.html#dynamic-inventory">Dynamic inventory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inventory.html#host-specs">Host specs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="conditionals.html#conditionals-with-host-specs">Conditionals with host specs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="conditionals.html#ad-hoc-command-line">Ad-hoc command line</a></li>
-<li class="toctree-l3"><a class="reference internal" href="conditionals.html#limit-option">&#8211;limit option</a></li>
-<li class="toctree-l3"><a class="reference internal" href="conditionals.html#plays">Plays</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="invoking.html">Invoking</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="invoking.html#ad-hoc">Ad-hoc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="invoking.html#playbooks">Playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="invoking.html#hosts-pulling-config">Hosts pulling config</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="playbook.html">Playbook</a><ul>
@@ -108,35 +103,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="conditionals.html#conditionals-with-host-specs">Conditionals with host specs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="conditionals.html#ad-hoc-command-line">Ad-hoc command line</a></li>
-<li class="toctree-l3"><a class="reference internal" href="conditionals.html#limit-option">&#8211;limit option</a></li>
-<li class="toctree-l3"><a class="reference internal" href="conditionals.html#plays">Plays</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="conditionals.html#conditional-tasks">Conditional tasks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="invoking.html">Invoking</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="invoking.html#ansible-ad-hoc-command">Ansible (ad-hoc) command</a></li>
-<li class="toctree-l2"><a class="reference internal" href="invoking.html#ansible-playbook-command">ansible-playbook command</a></li>
-<li class="toctree-l2"><a class="reference internal" href="invoking.html#hosts-pulling-config">Hosts pulling config</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="organizing.html">Organizing hosts, playbooks, etc</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="organizing.html#inventory-files">Inventory files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="organizing.html#groups">Groups</a></li>
-<li class="toctree-l2"><a class="reference internal" href="organizing.html#group-variables">Group variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="organizing.html#playbooks">Playbooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="organizing.html#how-to-use-this-organization">How to use this organization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="organizing.html#applying-subsets-of-tasks-using-tags">Applying subsets of tasks using tags</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing Ansible files</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html#which-files">Which files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html#how-to-share">How to share</a></li>
-</ul>
-</li>
 </ul>
 </div>
 <p>Misc. stuff I need to file somewhere:</p>
@@ -186,16 +156,13 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inventory.html">Inventory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="invoking.html">Invoking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="playbook.html">Playbook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role.html">Roles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task.html">Task</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="invoking.html">Invoking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="organizing.html">Organizing hosts, playbooks, etc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing Ansible files</a></li>
 </ul>
 
 

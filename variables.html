@@ -68,13 +68,26 @@
 <li>ansible command line (<code class="docutils literal"><span class="pre">--extra-vars</span> <span class="pre">&quot;foo=1</span> <span class="pre">bar=2&quot;</span></code> or <code class="docutils literal"><span class="pre">--extra-vars</span> <span class="pre">&#64;filepath.json</span></code> or <code class="docutils literal"><span class="pre">--extra-vars</span> <span class="pre">&#64;filepath.yml</span></code>)</li>
 </ul>
 <p>And here&#8217;s the precedence order:</p>
-<ul class="simple">
-<li>extra vars (-e in the command line) always win</li>
-<li>then comes connection variables defined in inventory (ansible_ssh_user, etc)</li>
-<li>then comes &#8220;most everything else&#8221; (command line switches, vars in play, included vars, role vars, etc)</li>
-<li>then comes the rest of the variables defined in inventory</li>
-<li>then comes facts discovered about a system</li>
-<li>then &#8220;role defaults&#8221;, which are the most &#8220;defaulty&#8221; and lose in priority to everything.</li>
+<ul>
+<li><p class="first">extra vars (-e in the command line) always win</p>
+</li>
+<li><dl class="first docutils">
+<dt>then comes connection variables defined in inventory (ansible_ssh_user, etc)</dt>
+<dd><ul class="first last simple">
+<li>Do NOT put things like ansible_sudo=[yes|no] here because it&#8217;ll override the values
+set in plays, tasks, etc. which need to be able to control it themselves</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">then comes &#8220;most everything else&#8221; (command line switches, vars in play, included vars, role vars, etc)</p>
+</li>
+<li><p class="first">then comes the rest of the variables defined in inventory</p>
+</li>
+<li><p class="first">then comes facts discovered about a system</p>
+</li>
+<li><p class="first">then &#8220;role defaults&#8221;, which are the most &#8220;defaulty&#8221; and lose in priority to everything.</p>
+</li>
 </ul>
 </div>
 <div class="section" id="variables-file">
@@ -95,8 +108,7 @@ for directories named <code class="docutils literal"><span class="pre">host_vars
 those directories, you can put a single <a class="reference internal" href="#variables-file"><span>Variables file</span></a> with the same
 name as a host or group (respectively) and Ansible will use those
 <a class="reference internal" href="#id1"><span>Variables</span></a> definitions.</p>
-<p>Or a file named <code class="docutils literal"><span class="pre">all</span></code> in <code class="docutils literal"><span class="pre">group_vars</span></code> (but not <code class="docutils literal"><span class="pre">host_vars</span></code>)
-that will be used for all hosts or groups.</p>
+<p>Or a file named <code class="docutils literal"><span class="pre">all</span></code> that will be used for all hosts or groups.</p>
 <p>Or you can create a directory with the same name as a host or group
 and Ansible will use all the files in that directory as
 <a class="reference internal" href="#variables-file"><span>Variables file</span></a> s.</p>
@@ -145,7 +157,7 @@ available for that particular host.</p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inventory.html">Inventory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="invoking.html">Invoking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="playbook.html">Playbook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role.html">Roles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="task.html">Task</a></li>
@@ -158,9 +170,6 @@ available for that particular host.</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="invoking.html">Invoking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="organizing.html">Organizing hosts, playbooks, etc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sharing.html">Sharing Ansible files</a></li>
 </ul>
 
 
